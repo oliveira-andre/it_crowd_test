@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:9.5'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+
+  api:
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile
+    command: bash start.sh
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/it_crowd_test_api'
+    volumes:
+      - box:/box
+    depends_on:
+      - postgres
+
+  box:
+    image: busybox
+    volumes:
+      - /box
+ 
+volumes:
+  postgres:
+  box:
