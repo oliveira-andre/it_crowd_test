@@ -19,6 +19,17 @@ class Person < ApplicationRecord
     @password = value
   end
 
+  def valid_password?(password)
+    Password.new(password_digest) == password
+  end
+
+  def token
+    JWT.encode(
+      { data: id, exp: (Time.zone.now + 4.hours).to_i },
+      JWT_SECRET, 'HS256'
+    )
+  end
+
   def movies_as_actors
     movies.joins(:movie_people).where(movie_people: { role: :actors })
   end
