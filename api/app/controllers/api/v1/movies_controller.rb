@@ -3,7 +3,11 @@
 module Api
   module V1
     class MoviesController < ApplicationController
-      before_action :authenticate_person!
+      before_action :authenticate_person!, except: :index
+
+      def index
+        serializer(Movies::Index.new.fetch)
+      end
 
       def create
         serializer(Movies::Create.new(create_movie_params).fetch_and_validate)
