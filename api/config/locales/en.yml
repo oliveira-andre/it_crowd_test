@@ -2,3 +2,5 @@ en:
   errors:
     invalid_params: 'Invalid Params'
     not_found: 'Record not found'
+    invalid_token: 'You need to sign in!'
+    token_expired: 'You have been logouted, please sign in again'
