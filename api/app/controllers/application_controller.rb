@@ -16,4 +16,12 @@ class ApplicationController < ActionController::API
   def error_serializer(error_message)
     render json: { errors: error_message }, status: 422
   end
+
+  private
+
+  def authenticate_person!
+    @current_person = SignInService.new(
+      request.headers['authorization']
+    ).execute
+  end
 end
