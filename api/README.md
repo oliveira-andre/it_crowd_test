@@ -71,3 +71,31 @@
   }
   ```
 </details>
+
+<details>
+  <summary>Update</summary>
+
+  curl:
+  ```
+  curl -kv -H 'content-type: application/json' -H 'authorization: bearer eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoxMSwiZXhwIjoxNjAwOTA0ODUxfQ.wK3S1eq-66YOMycCAuUTb__6VkPPHPTzB4rrn408Dds' -X 'PUT' -d '{ "title": "Back to the future", "released_at": "28/04/2000", "movie_people_attributes": [{"id": "18", "role": "director", "person_id": "11"}] }' 'http://localhost:3000/api/v1/movies/30' | jq
+  ```
+
+  expected status: 202
+
+  expected output:
+  ```json
+  {
+    "id": 30,
+    "title": "Back to the future",
+    "release_year": "MM",
+    "directors": [
+      {
+        "movie_person_id": 18,
+        "first_name": "root",
+        "last_name": "admin",
+        "email": "root@root.com"
+      }
+    ]
+  }
+  ```
+</details>
