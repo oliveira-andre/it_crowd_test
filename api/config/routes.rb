@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :sessions, only: :create
       resources :people, only: %i[index create]
-      resources :movies, only: %i[create update destroy]
+      resources :movies, only: %i[create update destroy show]
     end
   end
 end
