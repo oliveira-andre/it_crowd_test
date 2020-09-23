@@ -11,6 +11,7 @@ module Api
 
       def attributes(data)
         {
+          id: data.id,
           title: data.title,
           release_year: data.release_year,
           cascating: cascating(data.cascating),
@@ -24,10 +25,10 @@ module Api
 
         cascatings.map do |person|
           {
+            movie_person_id: person.movie_person_id,
             first_name: person.first_name,
             last_name: person.last_name,
-            email: person.email,
-            role: :actors
+            email: person.email
           }.compact
         end
       end
@@ -37,10 +38,10 @@ module Api
 
         directors.map do |person|
           {
+            movie_person_id: person.movie_person_id,
             first_name: person.first_name,
             last_name: person.last_name,
-            email: person.email,
-            role: :director
+            email: person.email
           }.compact
         end
       end
@@ -50,10 +51,10 @@ module Api
 
         producers.map do |person|
           {
+            movie_person_id: person.movie_person_id,
             first_name: person.first_name,
             last_name: person.last_name,
-            email: person.email,
-            role: :producer
+            email: person.email
           }.compact
         end
       end
