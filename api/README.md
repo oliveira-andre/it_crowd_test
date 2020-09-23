@@ -99,3 +99,14 @@
   }
   ```
 </details>
+
+<details>
+  <summary>Destroy</summary>
+
+  curl:
+  ```
+  curl -kv -H 'content-type: application/json' -H 'authorization: bearer eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoxMSwiZXhwIjoxNjAwOTA0ODUxfQ.wK3S1eq-66YOMycCAuUTb__6VkPPHPTzB4rrn408Dds' -X 'DELETE' 'http://localhost:3000/api/v1/movies/31' | jq
+  ```
+
+  expected status: 204
+</details>
