@@ -16,16 +16,16 @@ class Movie < ApplicationRecord
 
   def cascating
     people.joins(:movie_people).where(movie_people: { role: :actors })
-          .select('movie_people.id as movie_person_id', 'people.*')
+          .select('DISTINCT movie_people.id as movie_person_id', 'people.*')
   end
 
   def directors
     people.joins(:movie_people).where(movie_people: { role: :director })
-          .select('movie_people.id as movie_person_id', 'people.*')
+          .select('DISTINCT movie_people.id as movie_person_id', 'people.*')
   end
 
   def producers
     people.joins(:movie_people).where(movie_people: { role: :producer })
-          .select('movie_people.id as movie_person_id', 'people.*')
+          .select('DISTINCT movie_people.id as movie_person_id', 'people.*')
   end
 end
