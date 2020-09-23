@@ -14,7 +14,11 @@ module Api
       end
 
       def destroy
-        serializer(Movies::Destroy.new(destroy_movie_params).fetch_and_destroy)
+        serializer(Movies::Destroy.new(movie_id_params).fetch_and_destroy)
+      end
+
+      def show
+        serializer(Movies::Show.new(movie_id_params).fetch)
       end
 
       private
@@ -31,7 +35,7 @@ module Api
         ).merge(movie_id: params[:id])
       end
 
-      def destroy_movie_params
+      def movie_id_params
         params.merge(id: params[:id])
       end
     end
