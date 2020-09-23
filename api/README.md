@@ -51,6 +51,34 @@
   ```
 </details>
 
+<details>
+  <summary>Show</summary>
+
+  curl:
+  ```
+  curl -kv -H 'content-type: application/json' -H 'authorization: bearer eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoxMSwiZXhwIjoxNjAwOTA0ODUxfQ.wK3S1eq-66YOMycCAuUTb__6VkPPHPTzB4rrn408Dds' -X 'GET' 'http://localhost:3000/api/v1/people/' | jq
+  ```
+
+  expected status: 200
+
+  expected output:
+  ```json
+  {
+    "id": 11,
+    "first_name": "teste",
+    "last_name": "teste",
+    "email": "root@root.com",
+    "movies_as_director": [
+      {
+        "title": "Back to the future",
+        "release_year": "MM",
+        "role": "director"
+      }
+    ]
+  }
+  ```
+</details>
+
 ### Sessions
 
 <details>
