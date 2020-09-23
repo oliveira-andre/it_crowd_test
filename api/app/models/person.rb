@@ -9,7 +9,7 @@ class Person < ApplicationRecord
   validates_presence_of :first_name, :last_name, :email, :password_digest
   validates_uniqueness_of :email
   validates :email, format: { with: EMAIL_VALIDATOR }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
 
   has_many :movie_people
   has_many :movies, through: :movie_people
