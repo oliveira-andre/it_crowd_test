@@ -22,6 +22,8 @@ module Api
 
         def person
           @person ||= Person.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          raise ServiceException.new, I18n.t('errors.not_found')
         end
 
         def update
