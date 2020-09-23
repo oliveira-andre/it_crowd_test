@@ -5,7 +5,7 @@ module Api
     module People
       class Update < ApplicationValidator
         def fetch_and_validate
-          { data: fetch, serializer: serializer, status: 201 }
+          { data: fetch, serializer: serializer, status: 202 }
         end
 
         private
