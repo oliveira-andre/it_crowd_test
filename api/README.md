@@ -1,24 +1,23 @@
-# README
+# Responses
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Persons
 
-Things you may want to cover:
+<details>
+  <summary>Create</summary>
 
-* Ruby version
+  curl:
+  ```
+  curl -kv -H 'content-type: application/json' -X 'POST' -d '{ "first_name": "root", "last_name": "admin", "email": "root@root.com", "password": "123456"}' 'http://localhost:3000/api/v1/people' | jq
+  ```
 
-* System dependencies
+  expected status: 201
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  expected output:
+  ```
+  {
+    "first_name": "root",
+    "last_name": "admin",
+    "email": "root@root.com"
+  }
+  ```
+</details>
