@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :sessions, only: :create
       resources :people, only: %i[index create]
+      resources :movies, only: :create
     end
   end
 end
