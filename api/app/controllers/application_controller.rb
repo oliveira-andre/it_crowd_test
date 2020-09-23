@@ -5,9 +5,12 @@ class ApplicationController < ActionController::API
     error_serializer(e.message)
   end
 
-  def serializer(data, serializer, status: 201)
-    render json: "Api::V1::#{serializer}".constantize.new(data).serialize,
-           status: status
+  def serializer(params = {})
+    data = params[:data]
+    serializer = params[:serializer]
+    status = params[:status] || 200
+
+    render json: serializer.new(data).serialize, status: status
   end
 
   def error_serializer(error_message)
