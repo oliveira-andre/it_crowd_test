@@ -13,7 +13,7 @@
   expected status: 201
 
   expected output:
-  ```
+  ```json
   {
     "first_name": "root",
     "last_name": "admin",
@@ -35,9 +35,38 @@
   expected status: 201
 
   expected output:
-  ```
+  ```json
   {
     "token": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoxMSwiZXhwIjoxNjAwODUzNTY4fQ.-YMcYqNv4rxhmu63qvjIee3FWIbvFJTO4Q2mV4_FX_g"
+  }
+  ```
+</details>
+
+### Movies
+
+<details>
+  <summary>Create</summary>
+
+  curl:
+  ```
+  curl -kv -H 'content-type: application/json' -H 'authorization: bearer eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoxMSwiZXhwIjoxNjAwODg4NTk4fQ.9rZJDeUMiGoam7_h0M_U6KX-7BTynIM3zATh4hKZLX8' -X 'POST' -d '{ "title": "Back to the future", "released_at": "28/04/2000", "movie_people_attributes": [{"role": "actors", "person_id": "11"}] }' 'http://localhost:3000/api/v1/movies' | jq
+  ```
+
+  expected status: 201
+  
+  expected output:
+  ```json
+  {
+    "title": "Back to the future",
+    "release_year": "MM",
+    "cascating": [
+      {
+        "first_name": "root",
+        "last_name": "admin",
+        "email": "root@root.com",
+        "role": "actors"
+      }
+    ]
   }
   ```
 </details>
