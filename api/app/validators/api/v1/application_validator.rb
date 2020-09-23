@@ -5,7 +5,7 @@ module Api
     class ApplicationValidator
       attr_accessor :params
 
-      def initialize(params)
+      def initialize(params = {})
         @params = params
       end
     end
