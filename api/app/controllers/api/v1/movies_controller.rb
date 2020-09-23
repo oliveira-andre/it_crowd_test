@@ -13,6 +13,10 @@ module Api
         serializer(Movies::Update.new(update_movie_params).fetch_and_validate)
       end
 
+      def destroy
+        serializer(Movies::Destroy.new(destroy_movie_params).fetch_and_destroy)
+      end
+
       private
 
       def create_movie_params
@@ -25,6 +29,10 @@ module Api
         params.require(:movie).permit(
           :title, :released_at, movie_people_attributes: %i[id role person_id]
         ).merge(movie_id: params[:id])
+      end
+
+      def destroy_movie_params
+        params.merge(id: params[:id])
       end
     end
   end
