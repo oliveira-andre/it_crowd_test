@@ -16,3 +16,12 @@ Last but not least run the server
 ```
 docker-compose up
 ```
+
+[if you wanna see how request works click here](https://github.com/oliveira-andre/it_crowd_test/tree/master/api)
+
+### Tests
+
+rubocop
+```
+docker-compose run --rm api bundle exec rubocop
+```
