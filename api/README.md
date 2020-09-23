@@ -45,6 +45,36 @@
 ### Movies
 
 <details>
+  <summary>Index</summary>
+
+  curl:
+  ```
+  curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3000/api/v1/movies/' | jq
+  ```
+
+  expected status: 200
+
+  expected output:
+  ```json
+  [
+    {
+      "id": 30,
+      "title": "Back to the future",
+      "release_year": "MM",
+      "directors": [
+        {
+          "movie_person_id": 18,
+          "first_name": "root",
+          "last_name": "admin",
+          "email": "root@root.com"
+        }
+      ]
+    }
+  ]
+  ```
+</details>
+
+<details>
   <summary>Create</summary>
 
   curl:
