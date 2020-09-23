@@ -57,14 +57,15 @@
   expected output:
   ```json
   {
+    "id": 30,
     "title": "Back to the future",
     "release_year": "MM",
     "cascating": [
       {
+        "movie_person_id": 18,
         "first_name": "root",
         "last_name": "admin",
-        "email": "root@root.com",
-        "role": "actors"
+        "email": "root@root.com"
       }
     ]
   }
