@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class Movie < ApplicationRecord
-  validates_presence_of :title
+  include ConvertToRoman
+
+  validates_presence_of :title, :released_at
 
   has_many :movie_people
   has_many :people, through: :movie_people
+
+  def release_year
+    roman(released_at.year)
+  end
 
   def cascating
     people.joins(:movie_people).where(movie_people: { role: :actors })
