@@ -5,7 +5,7 @@ module Api
     module People
       class Create < ApplicationValidator
         def fetch_and_validate
-          { data: @person, serializer: serializer, status: 201 }
+          { data: person, serializer: serializer, status: 201 }
         end
 
         private
