@@ -5,10 +5,14 @@ module Api
     module Movies
       class Update < ApplicationValidator
         def fetch_and_validate
-          { data: movie, serializer: MoviesSerializer, status: 202 }
+          { data: movie, serializer: serializer, status: 202 }
         end
 
         private
+
+        def serializer
+          MoviesSerializer
+        end
 
         def movie
           movie_transaction

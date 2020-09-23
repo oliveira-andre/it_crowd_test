@@ -5,10 +5,14 @@ module Api
     module Movies
       class Index < ApplicationValidator
         def fetch
-          { data: load_movies, serializer: MoviesSerializer, status: 200 }
+          { data: load_movies, serializer: serializer, status: 200 }
         end
 
         private
+
+        def serializer
+          MoviesSerializer
+        end
 
         def load_movies
           Movie.all

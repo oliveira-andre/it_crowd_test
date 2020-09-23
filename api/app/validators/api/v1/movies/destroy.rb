@@ -7,10 +7,14 @@ module Api
         def fetch_and_destroy
           fetch
           destroy
-          { data: {}, serializer: MoviesSerializer, status: 204 }
+          { data: {}, serializer: serializer, status: 204 }
         end
 
         private
+
+        def serializer
+          MoviesSerializer
+        end
 
         def fetch
           @movie ||= Movie.find(params[:id])

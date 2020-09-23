@@ -5,10 +5,14 @@ module Api
     module Movies
       class Create < ApplicationValidator
         def fetch_and_validate
-          { data: movie, serializer: MoviesSerializer, status: 201 }
+          { data: movie, serializer: serializer, status: 201 }
         end
 
         private
+
+        def serializer
+          MoviesSerializer
+        end
 
         def movie
           movie_transaction

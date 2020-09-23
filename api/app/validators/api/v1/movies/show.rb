@@ -5,10 +5,14 @@ module Api
     module Movies
       class Show < ApplicationValidator
         def fetch
-          { data: movie, serializer: MoviesSerializer, status: 200 }
+          { data: movie, serializer: serializer, status: 200 }
         end
 
         private
+
+        def serializer
+          MoviesSerializer
+        end
 
         def movie
           Movie.find(params[:id])
