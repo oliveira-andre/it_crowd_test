@@ -13,6 +13,10 @@ module Api
         serializer(People::Update.new(update_person_params).fetch_and_validate)
       end
 
+      def show
+        serializer(People::Show.new(show_person_params).fetch)
+      end
+
       private
 
       def create_person_params
@@ -25,6 +29,10 @@ module Api
         params.require(:person).permit(
           :first_name, :last_name, :aliases
         ).merge(id: @current_person.id)
+      end
+
+      def show_person_params
+        params.merge(id: @current_person.id)
       end
     end
   end
