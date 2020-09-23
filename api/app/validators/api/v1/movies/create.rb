@@ -18,6 +18,8 @@ module Api
         def movie_transaction
           Movie.transaction do
             create_movie!
+            return unless params[:movie_people_attributes]
+
             params[:movie_people_attributes].each do |movie_people_param|
               create_movie_people!(movie_people_param)
             end
