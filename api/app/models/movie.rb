@@ -8,6 +8,8 @@ class Movie < ApplicationRecord
   has_many :movie_people
   has_many :people, through: :movie_people
 
+  accepts_nested_attributes_for :movie_people
+
   def release_year
     roman(released_at.year)
   end
