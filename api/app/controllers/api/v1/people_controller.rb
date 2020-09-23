@@ -10,7 +10,7 @@ module Api
       end
 
       def update
-        serializer(People::Create.new(update_person_params).fetch_and_validate)
+        serializer(People::Update.new(update_person_params).fetch_and_validate)
       end
 
       private
@@ -21,10 +21,10 @@ module Api
         ).merge(password: params[:password])
       end
 
-      def update_people_params
+      def update_person_params
         params.require(:person).permit(
           :first_name, :last_name, :aliases
-        )
+        ).merge(id: @current_person.id)
       end
     end
   end
