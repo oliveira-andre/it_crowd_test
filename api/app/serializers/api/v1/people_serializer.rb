@@ -28,8 +28,8 @@ module Api
             title: movie.title,
             release_year: movie.release_year,
             role: :actors
-          }
-        end.compact
+          }.compact
+        end
       end
 
       def movies_as_director(movies_as_director)
@@ -40,8 +40,8 @@ module Api
             title: movie.title,
             release_year: movie.release_year,
             role: :director
-          }
-        end.compact
+          }.compact
+        end
       end
 
       def movies_as_producer(movies_as_producer)
@@ -52,8 +52,8 @@ module Api
             title: movie.title,
             release_year: movie.release_year,
             role: :producer
-          }
-        end.compact
+          }.compact
+        end
       end
     end
   end
