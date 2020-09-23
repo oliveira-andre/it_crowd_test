@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 EMAIL_VALIDATOR = /\A[\w]+@[a-z]+\.[a-z]+\z/.freeze
+
 ROMAN_NUMBERS = {
   1000 => 'M',
   900 => 'CM',
@@ -17,3 +18,5 @@ ROMAN_NUMBERS = {
   1 => 'I',
   0 => ''
 }.freeze
+
+JWT_SECRET = ENV['jwt_secret'] || 'secret'
