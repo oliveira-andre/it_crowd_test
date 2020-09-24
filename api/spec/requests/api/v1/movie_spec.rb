@@ -135,4 +135,41 @@ RSpec.describe 'Movie Management', type: :request do
       end
     end
   end
+
+  context :show do
+    let(:movie_person) { create(:movie_person) }
+    let(:movie) { movie_person.movie }
+    let(:current_path) { "/api/v1/movies/#{movie.id}" }
+    subject { get current_path, headers: headers }
+
+    context 'invalid headers' do
+      let(:headers) { { 'authorization' => '' } }
+      before { subject }
+
+      it { expect(response).to have_http_status(422) }
+      it do
+        expect(parsed_response['errors']).to eq(I18n.t('errors.invalid_token'))
+      end
+    end
+
+    context 'valid headers' do
+      let(:headers) { { 'authorization' => movie_person.person.token } }
+
+      context 'user not exist' do
+        let(:current_path) { '/api/v1/movies/any' }
+        before { subject }
+
+        it { expect(response).to have_http_status(422) }
+        it do
+          expect(parsed_response['errors']).to eq(I18n.t('errors.not_found'))
+        end
+      end
+
+      context 'user exist' do
+        before { subject }
+
+        it { expect(response).to have_http_status(200) }
+      end
+    end
+  end
 end
