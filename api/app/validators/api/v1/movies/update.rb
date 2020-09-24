@@ -22,6 +22,8 @@ module Api
         def movie_transaction
           Movie.transaction do
             update_movie!
+            return unless params[:movie_people_attributes]
+
             params[:movie_people_attributes].each do |movie_people_param|
               create_or_update_movie_people(movie_people_param)
             end
