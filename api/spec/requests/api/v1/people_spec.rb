@@ -18,5 +18,18 @@ RSpec.describe 'People Management', type: :request do
         )
       end
     end
+
+    context 'valid params' do
+      let(:params) do
+        {
+          person: attributes_for(:person),
+          password: FFaker::Internet.password
+        }
+      end
+      before { subject }
+
+      it { expect(response).to have_http_status(201) }
+      it { expect(parsed_response.present?).to be_truthy }
+    end
   end
 end
