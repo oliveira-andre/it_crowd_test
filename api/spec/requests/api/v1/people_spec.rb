@@ -32,4 +32,37 @@ RSpec.describe 'People Management', type: :request do
       it { expect(parsed_response.present?).to be_truthy }
     end
   end
+
+  context :update do
+    let(:current_path) { '/api/v1/people' }
+    subject { put current_path, headers: headers, params: params }
+
+    context 'invalid headers' do
+      let(:headers) { { 'authorization' => '' } }
+      let(:params) { { person: {} } }
+      before { subject }
+
+      it { expect(response).to have_http_status(422) }
+      it do
+        expect(parsed_response['errors']).to eq(I18n.t('errors.invalid_token'))
+      end
+    end
+
+    context 'valid headers' do
+      let(:person) { create(:person) }
+      let(:headers) { { 'authorization' => person.token } }
+
+      context 'invalid params' do
+        let(:params) { { person: { first_name: '' } } }
+        before { subject }
+
+        it { expect(response).to have_http_status(422) }
+        it do
+          expect(parsed_response['errors']).to eq(
+            I18n.t('errors.invalid_params')
+          )
+        end
+      end
+    end
+  end
 end
