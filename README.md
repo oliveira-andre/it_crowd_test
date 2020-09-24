@@ -7,6 +7,11 @@ First of all build the container, it can take some time then is a good momento t
 docker-compose build --no-cache
 ```
 
+bundle packages
+```
+docker-compose run --rm api bundle install
+```
+
 Create and migrate database
 ```
 docker-compose run --rm api bundle exec rails db:create db:migrate
@@ -24,4 +29,9 @@ docker-compose up
 rubocop
 ```
 docker-compose run --rm api bundle exec rubocop
+```
+
+rspec
+```
+docker-compose run --rm api bundle exec rspec
 ```
